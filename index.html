@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Image Compressor Officil - Compress images up to 50MB to 1KB with quality preservation.">
+    <meta name="keywords" content="image compressor, image resizer, pdf compressor, image converter, pdf converter, pdf resizer">
+    <meta name="author" content="Shabbir">
+    <title>Image Compressor Officil</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">ICO</div>
+        <div class="title">Image Compressor Officil</div>
+        <div class="menu-bar" onclick="toggleMenu()">&#9776;</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search tools...">
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="active">
+            <h1>Welcome to Image Compressor Officil</h1>
+            <p>Select a tool below to get started!</p>
+            <div class="tool-list">
+                <div class="tool" style="background: #ff6b6b" onclick="showTool('image-compressor')">Image Compressor</div>
+                <div class="tool" style="background: #ff85a1" onclick="showTool('image-resizer')">Image Resizer</div>
+                <div class="tool" style="background: #ffe66d" onclick="showTool('image-converter')">Image Converter</div>
+                <div class="tool" style="background: #2ecc71" onclick="showTool('pdf-compressor')">PDF Compressor</div>
+                <div class="tool" style="background: #3498db" onclick="showTool('pdf-converter')">PDF Converter</div>
+                <div class="tool" style="background: #9b59b6" onclick="showTool('pdf-resizer')">PDF Resizer</div>
+            </div>
+        </section>
+
+        <!-- Image Compressor -->
+        <section id="image-compressor" class="tool-section" style="background: #ff6b6b;">
+            <h2>Image Compressor</h2>
+            <div class="upload-area" id="upload-image">
+                <p>Drag & Drop or Click to Upload Image (Max 50MB)</p>
+                <input type="file" id="image-file" accept="image/*" style="display:none;">
+            </div>
+            <div id="image-options" style="display:none;">
+                <button id="replace-image">Replace Image</button>
+                <button id="delete-image">Delete Image</button>
+            </div>
+            <div id="image-preview" class="preview"></div>
+            <div id="image-compression-options">
+                <label>Compression Mode:</label>
+                <select id="image-mode">
+                    <option value="manual">Manual</option>
+                    <option value="auto">Automatic</option>
+                </select>
+                <div id="manual-options" style="display:none;">
+                    <label>Target Size (KB):</label>
+                    <input type="number" id="target-size" min="1" max="50000" value="1">
+                    <label>Quality (1-100):</label>
+                    <input type="range" id="image-quality" min="1" max="100" value="80">
+                    <span id="image-quality-value">80%</span>
+                </div>
+                <button id="compress-image">Compress</button>
+                <button id="download-image" disabled>Download</button>
+            </div>
+        </section>
+
+        <!-- Image Resizer -->
+        <section id="image-resizer" class="tool-section" style="background: #ff85a1;">
+            <h2>Image Resizer</h2>
+            <div class="upload-area" id="upload-resize">
+                <p>Drag & Drop or Click to Upload Image (Max 50MB)</p>
+                <input type="file" id="resize-file" accept="image/*" style="display:none;">
+            </div>
+            <div id="resize-preview" class="preview"></div>
+            <div id="resize-options">
+                <label>Width (px):</label>
+                <input type="number" id="resize-width" min="1" value="800">
+                <label>Height (px):</label>
+                <input type="number" id="resize-height" min="1" value="600">
+                <button id="resize-image">Resize</button>
+                <button id="download-resize" disabled>Download</button>
+            </div>
+        </section>
+
+        <!-- Image Converter -->
+        <section id="image-converter" class="tool-section" style="background: #ffe66d;">
+            <h2>Image Converter</h2>
+            <div class="upload-area" id="upload-convert">
+                <p>Drag & Drop or Click to Upload Image (Max 50MB)</p>
+                <input type="file" id="convert-file" accept="image/*" style="display:none;">
+            </div>
+            <div id="convert-preview" class="preview"></div>
+            <div id="convert-options">
+                <label>Convert To:</label>
+                <select id="convert-format">
+                    <option value="jpeg">JPEG</option>
+                    <option value="png">PNG</option>
+                    <option value="webp">WebP</option>
+                </select>
+                <button id="convert-image">Convert</button>
+                <button id="download-convert" disabled>Download</button>
+            </div>
+        </section>
+
+        <!-- PDF Compressor -->
+        <section id="pdf-compressor" class="tool-section" style="background: #2ecc71;">
+            <h2>PDF Compressor</h2>
+            <div class="upload-area" id="upload-pdf-compress">
+                <p>Drag & Drop or Click to Upload PDF (Max 50MB)</p>
+                <input type="file" id="pdf-compress-file" accept=".pdf" style="display:none;">
+            </div>
+            <div id="pdf-compress-preview" class="preview"></div>
+            <div id="pdf-compress-options">
+                <label>Quality (1-100):</label>
+                <input type="range" id="pdf-compress-quality" min="1" max="100" value="50">
+                <span id="pdf-compress-quality-value">50%</span>
+                <button id="compress-pdf">Compress</button>
+                <button id="download-pdf-compress" disabled>Download</button>
+            </div>
+        </section>
+
+        <!-- PDF Converter -->
+        <section id="pdf-converter" class="tool-section" style="background: #3498db;">
+            <h2>PDF Converter</h2>
+            <div class="upload-area" id="upload-pdf-convert">
+                <p>Drag & Drop or Click to Upload File (Max 50MB)</p>
+                <input type="file" id="pdf-convert-file" accept="image/*,.pdf" style="display:none;">
+            </div>
+            <div id="pdf-convert-preview" class="preview"></div>
+            <div id="pdf-convert-options">
+                <label>Convert To:</label>
+                <select id="pdf-convert-format">
+                    <option value="pdf">Image to PDF</option>
+                    <option value="jpeg">PDF to JPEG</option>
+                </select>
+                <button id="convert-pdf">Convert</button>
+                <button id="download-pdf-convert" disabled>Download</button>
+            </div>
+        </section>
+
+        <!-- PDF Resizer -->
+        <section id="pdf-resizer" class="tool-section" style="background: #9b59b6;">
+            <h2>PDF Resizer</h2>
+            <div class="upload-area" id="upload-pdf-resize">
+                <p>Drag & Drop or Click to Upload PDF (Max 50MB)</p>
+                <input type="file" id="pdf-resize-file" accept=".pdf" style="display:none;">
+            </div>
+            <div id="pdf-resize-preview" class="preview"></div>
+            <div id="pdf-resize-options">
+                <label>Scale (%):</label>
+                <input type="number" id="pdf-resize-scale" min="10" max="200" value="100">
+                <button id="resize-pdf">Resize</button>
+                <button id="download-pdf-resize" disabled>Download</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Developed by Shabbir | <a href="#">Contact</a> | <a href="#">Service</a> | <a href="#">Support</a> | <a href="#">Privacy</a> | <a href="#">About</a></p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
