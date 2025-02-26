@@ -1,0 +1,200 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ff6b6b, #ffe66d, #2ecc71);
+    color: #333;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+.title {
+    font-size: 22px;
+}
+
+.menu-bar {
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.search-bar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Main Content */
+main {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+}
+
+.tool-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.tool {
+    padding: 15px 30px;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.tool:hover {
+    transform: scale(1.1);
+}
+
+/* Tool Sections */
+.tool-section {
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.upload-area {
+    border: 2px dashed #fff;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.upload-area:hover {
+    border-color: #333;
+    transform: scale(1.02);
+}
+
+.upload-area.dragover {
+    border-color: #ff0;
+    animation: pulse 1s infinite;
+}
+
+.preview {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.preview img {
+    max-width: 100%;
+    animation: fadeIn 0.5s;
+}
+
+/* Options */
+.tool-section div[id$="-options"] {
+    text-align: center;
+}
+
+.tool-section label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.tool-section input, .tool-section select {
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.tool-section button {
+    padding: 10px 20px;
+    margin: 10px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.tool-section button:hover {
+    background: #555;
+    transform: scale(1.05);
+}
+
+.tool-section button:disabled {
+    background: #777;
+    cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #fff;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tool-list {
+        flex-direction: column;
+    }
+
+    .tool-section div[id$="-options"] {
+        display: flex;
+        flex-direction: column;
+    }
+}
